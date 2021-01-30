@@ -44,7 +44,6 @@ class Keeley(flask.Flask):
         # fmt: off
         rules = [
             ('robots_txt',      '/robots.txt'),
-            ('site_name',       '/api/SiteName'),
             ('file_operations', '/api/FileManager/FileOperations'),
             ('download',        '/api/FileManager/Download'),
             ('upload',          '/api/FileManager/Upload'),

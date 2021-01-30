@@ -7,10 +7,6 @@ def robots_txt():
     return current_app.send_static_file("robots.txt")
 
 
-def site_name():
-    pass
-
-
 def file_operations():
     """Show a list of all repos. Can be sorted by last update and repo names can be searched."""
     repos = [repo.freeze() for repo in current_app.valid_repos.values()]
