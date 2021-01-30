@@ -1,0 +1,44 @@
+.TH KEELEY "1" "December 2020" "keeley 4e82832" "User Commands"
+.SH NAME
+keeley \- easy to set up web file manager
+.SH SYNOPSIS
+.B keeley
+[\fIOPTION\fR]... [\fIDIR\fR]...
+.SH DESCRIPTION
+Keeley is a simple and easy-to-set-up web file manager that Just Works\(tm.
+.PP
+Note that the keeley binary just starts a test instance. The keeley script uses
+wsgiref internally which doesn't scale at all - it's single-threaded and
+non-asynchronous.
+.PP
+???It supports syntax highlighting and Git Smart HTTP???
+.SH OPTIONS
+.TP
+\fB\-h\fR, \fB\-\-help\fR
+show this help message and exit
+.TP
+\fB\-\-host\fR HOST
+default: 127.0.0.1
+.TP
+\fB\-\-port\fR PORT
+default: 8080
+.TP
+\fB\-\-site\-name\fR SITE_NAME
+site name showed in header. default: your hostname
+.TP
+\fB\-\-version\fR
+print version number
+.TP
+\fB\-b\fR, \fB\-\-browser\fR
+open keeley in a browser on server start
+.TP
+\fB\-B\fR BROWSER, \fB\-\-with\-browser\fR BROWSER
+specify which browser to use with \fB\-\-browser\fR
+.SS "Development flags:"
+.IP
+DO NOT USE IN PRODUCTION!
+.TP
+\fB\-\-debug\fR
+??Enable Werkzeug debugger and reloader??
+.SH AUTHORS
+Copyright \(co 2011-2020 Fpemud <fpemud@sina.com> and contributors (see Git logs).

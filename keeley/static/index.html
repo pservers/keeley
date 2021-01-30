@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel=stylesheet href={{ url_for('static', filename='keeley.css') }} />
+    <link rel=icon type="image/png" href={{ url_for('static', filename='favicon.png') }} />
+    <title>{% block title %}{% endblock %} - {{ SITE_NAME }}</title>
+  </head>
+  <body>
+    <header>
+      <a href={{ url_for('repo_list') }}> 
+        {{ SITE_NAME }}
+      </a>
+      <span class=breadcrumbs>{% block breadcrumbs %}{% endblock %}</span>
+      {% block extra_header %}{% endblock %}
+    </header>
+
+    <div id=content>
+    {% block content %}{% endblock %}
+    </div>
+
+    <footer>
+      powered by <a href="https://github.com/pservers/keeley">keeley</a> {{ KEELEY_VERSION }},
+      a simple file manager by Fpemud
+    </footer>
+  </body>
+</html>

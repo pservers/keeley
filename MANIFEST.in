@@ -1,0 +1,2 @@
+recursive-include keeley/static *
+include keeley.1
