@@ -1,14 +1,10 @@
 #!/usr/bin/env python
 # coding: utf-8
-from __future__ import print_function
 
 import sys
 import os
 import argparse
 import webbrowser
-
-from dulwich.errors import NotGitRepository
-from dulwich.repo import Repo
 
 from keeley import make_app, KEELEY_VERSION
 from keeley.utils import force_unicode
