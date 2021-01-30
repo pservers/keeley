@@ -25,19 +25,8 @@ class Keeley(flask.Flask):
     def create_jinja_environment(self):
         """Called by Flask.__init__"""
         env = super(Keeley, self).create_jinja_environment()
-        for func in [
-            "force_unicode",
-            "timesince",
-            "shorten_sha1",
-            "shorten_message",
-            "extract_author_name",
-            "formattimestamp",
-        ]:
-            env.filters[func] = getattr(utils, func)
-
         env.globals["KEELEY_VERSION"] = KEELEY_VERSION
         env.globals["SITE_NAME"] = self.site_name
-
         return env
 
     def setup_routes(self):

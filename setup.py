@@ -16,7 +16,6 @@ def install_data_files_hack():
 install_data_files_hack()
 
 requires = [
-    "six",
     "flask",
     "httpauth",
     "humanize",

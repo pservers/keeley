@@ -7,7 +7,6 @@ import argparse
 import webbrowser
 
 from keeley import make_app, KEELEY_VERSION
-from keeley.utils import force_unicode
 
 
 def export_directory(path):
@@ -69,10 +68,7 @@ def main():
     if not args.site_name:
         args.site_name = "%s:%d" % (args.host, args.port)
 
-    app = make_app(
-        args.repos,
-        force_unicode(args.site_name or args.host),
-    )
+    app = make_app(args.repos, args.site_name)
 
     if args.browser:
         _open_browser(args)

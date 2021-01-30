@@ -8,7 +8,6 @@ import mimetypes
 import locale
 import warnings
 import subprocess
-import six
 
 try:
     import chardet
@@ -63,15 +62,6 @@ class ProxyFix(WerkzeugProxyFix):
         return super(ProxyFix, self).__call__(environ, start_response)
 
 
-def timesince(when, now=time.time):
-    """Return the difference between `when` and `now` in human readable form."""
-    return naturaltime(now() - when)
-
-
-def formattimestamp(timestamp):
-    return datetime.datetime.fromtimestamp(timestamp).strftime("%b %d, %Y %H:%M:%S")
-
-
 def guess_is_binary(dulwich_blob):
     return any(b"\0" in chunk for chunk in dulwich_blob.chunked)
 
@@ -93,47 +83,6 @@ def decode_from_git(b):
     return b.decode("utf8")
 
 
-def force_unicode(s):
-    """Do all kinds of magic to turn `s` into unicode"""
-    # It's already unicode, don't do anything:
-    if isinstance(s, six.text_type):
-        return s
-
-    last_exc = None
-    # Try some default encodings:
-    try:
-        return s.decode("utf-8")
-    except UnicodeDecodeError as exc:
-        last_exc = exc
-    try:
-        return s.decode(locale.getpreferredencoding())
-    except UnicodeDecodeError:
-        pass
-
-    if chardet is not None:
-        # Try chardet, if available
-        encoding = chardet.detect(s)["encoding"]
-        if encoding is not None:
-            return s.decode(encoding)
-
-    raise last_exc  # Give up.
-
-
-def extract_author_name(email):
-    """Extract the name from an email address --
-    >>> extract_author_name("John <john@example.com>")
-    "John"
-
-    -- or return the address if none is given.
-    >>> extract_author_name("noname@example.com")
-    "noname@example.com"
-    """
-    match = re.match("^(.*?)<.*?>$", email)
-    if match:
-        return match.group(1).strip()
-    return email
-
-
 def is_hex_prefix(s):
     if len(s) % 2:
         s += "0"
@@ -142,12 +91,6 @@ def is_hex_prefix(s):
         return True
     except binascii.Error:
         return False
-
-
-def shorten_sha1(sha1):
-    if 20 <= len(sha1) <= 40 and is_hex_prefix(sha1):
-        sha1 = sha1[:7]
-    return sha1
 
 
 def parent_directory(path):
@@ -164,10 +107,6 @@ def subpaths(path):
     for part in path.split("/"):
         seen.append(part)
         yield part, "/".join(seen)
-
-
-def shorten_message(msg):
-    return msg.split("\n")[0]
 
 
 def replace_dupes(ls, replacement):
@@ -196,11 +135,7 @@ def guess_git_revision():
     """
     git_dir = os.path.join(os.path.dirname(__file__), "..", ".git")
     try:
-        return force_unicode(
-            subprocess.check_output(
-                ["git", "log", "--format=%h", "-n", "1"], cwd=git_dir
-            ).strip()
-        )
+        return subprocess.check_output(["git", "log", "--format=%h", "-n", "1"], cwd=git_dir).strip()
     except OSError:
         # Either the git executable couldn't be found in the OS's PATH
         # or no ".git" directory exists, i.e. this is no "bleeding-edge" installation.
