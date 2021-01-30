@@ -27,7 +27,7 @@ setup(
     version="0.0.1",
     author="Fpemud",
     author_email="fpemud@sina.com",
-    packages=["keeley", "keeley.contrib"],
+    packages=["keeley"],
     scripts=["bin/keeley"],
     include_package_data=True,
     zip_safe=False,
