@@ -21,12 +21,27 @@ rm -rf "$SRCDIR/node_modules"
 npm install --no-fund --no-save --only=production --prefix="$SRCDIR" $REGISTRY_ARG
 
 # bundle
+# (order of items in "plugins" is critical)
 cat <<-EOF > "$SRCDIR/webpack.config.js"
+	const path = require('path');
+	const HtmlWebpackPlugin = require('html-webpack-plugin');
+	const FaviconsWebpackPlugin = require('favicons-webpack-plugin')
+
 	module.exports = {
+	  context: '$SRCDIR',
 	  entry: './main.js',
 	  output: {
-	    filename: "$DSTDIR/bundle.js",
+	    filename: "index-bundle.js",
+	    path: path.resolve(__dirname, 'static'),
 	  },
+	  plugins: [
+	    new HtmlWebpackPlugin({
+	      title: 'Output Management',
+	    }),
+		new FaviconsWebpackPlugin({
+		  logo: './favicon.png',
+		}),
+	  ],
 	  module: {
 	    rules: [
 	      {

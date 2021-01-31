@@ -1,0 +1,43 @@
+/* for ej2-filemanager module*/
+/* it sucks that ej2-filemanager can not reference all its dependencies by itself */
+@import 'node_modules/@syncfusion/ej2-base/styles/material.css';
+@import 'node_modules/@syncfusion/ej2-icons/styles/material.css';
+@import 'node_modules/@syncfusion/ej2-inputs/styles/material.css';
+@import 'node_modules/@syncfusion/ej2-popups/styles/material.css';
+@import 'node_modules/@syncfusion/ej2-buttons/styles/material.css';
+@import 'node_modules/@syncfusion/ej2-splitbuttons/styles/material.css';
+@import 'node_modules/@syncfusion/ej2-navigations/styles/material.css';
+@import 'node_modules/@syncfusion/ej2-layouts/styles/material.css';
+@import 'node_modules/@syncfusion/ej2-grids/styles/material.css';
+@import 'node_modules/@syncfusion/ej2-filemanager/styles/material.css';
+
+/* common */
+body { overflow: auto; margin: 0; padding: 0; font-family: sans-serif; }    /* different between default? */
+a, a:visited { color: #003278; text-decoration: none; }                   /* different between default? */
+a:hover { text-decoration: underline; }                                     /* different between default? */
+table { border-spacing: 0; border-collapse: collapse; }                     /* different between default? */
+
+/* header */
+header {
+overflow: auto;
+font-size: 90%;
+padding: 0.5%;
+border-bottom: 3px solid #e0e0e0;
+}
+header a { padding: 0.5% 0; }
+header .breadcrumbs > span:before { content: ' » '; color: #666; }
+header .slash { margin: 0 -2px; }
+
+/* div[#content] */
+#content { overflow: auto; }
+
+/* footer */
+footer {
+clear: both;
+font-size: 80%;
+float: right;
+color: #666;
+padding: 50px 5px 5px 0;
+}
+footer a { color: inherit; border-bottom: 1px dotted #666; }
+footer a:hover { text-decoration: none; }
