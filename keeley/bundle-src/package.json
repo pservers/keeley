@@ -9,8 +9,8 @@
     "@syncfusion/ej2-filemanager": "^18.4.0"
   },
   "devDependencies": {
-    "webpack": "^5.0.0",
-    "html-webpack-plugin": "^5.0.0",
+    "webpack": "^4.46.0",
+    "html-webpack-plugin": "^4.5.0",
     "favicons-webpack-plugin": "^4.2.0",
     "css-loader": "^5.0.0",
     "style-loader": "^2.0.0"
