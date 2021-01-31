@@ -27,6 +27,18 @@ cat <<-EOF > "$SRCDIR/webpack.config.js"
 	  output: {
 	    filename: "$DSTDIR/bundle.js",
 	  },
+	  module: {
+	    rules: [
+	      {
+	        test: /\\.css\$/i,
+	        use: ['style-loader', 'css-loader'],
+	      },
+	      {
+	        test: /\\.(png|svg|jpg|jpeg|gif)\$/i,
+	        type: 'asset/resource',
+	      },
+	    ],
+	  },
 	}
 	EOF
 webpack --env production --env min --config "$SRCDIR/webpack.config.js"

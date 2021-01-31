@@ -2,13 +2,14 @@
   "name": "keeley",
   "private": true,
   "dependencies": {
-    "bufferutil": "^4.0.3",
-    "utf-8-validate": "^5.0.4",
+    "bufferutil": "^4.0.0",
+    "utf-8-validate": "^5.0.0",
     "@syncfusion/ej2-filemanager": "^18.4.39"
   },
   "devDependencies": {
-    "webpack": "^5.19.0",
-    "css-loader": "^5.0.1",
-    "style-loader": "^2.0.0"
+    "webpack": "^5.0.0"
+    "html-webpack-plugin": "^4.5.0",
+    "css-loader": "^5.0.0",
+    "style-loader": "^2.0.0",
   }
 }
