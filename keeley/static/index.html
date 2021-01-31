@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <link type="text/css" src={{ url_for('static', filename='bundle.css') }}></script>
     <style type="text/css">
       /* for ej2-filemanager module*/
       /* it sucks that ej2-filemanager can not reference all its dependencies by itself */
@@ -75,17 +76,6 @@
       a simple file manager by Fpemud
     </footer>
 
-    <script>
-      import { FileManager } from '@syncfusion/ej2-filemanager';
-      let fm = new FileManager({
-          ajaxSettings: {
-              url: 'api/FileManager/FileOperations',
-              downloadUrl: 'api/FileManager/Download',
-              uploadUrl: 'api/FileManager/Upload',
-              getImageUrl: 'api/FileManager/GetImage',
-          }
-      });
-      fm.appendTo('#filemanager');
-    </script>
+    <script type="text/javascript" src={{ url_for('static', filename='bundle.js') }} />
   </body>
 </html>
