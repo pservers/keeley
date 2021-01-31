@@ -5,15 +5,9 @@
 
 SRCDIR=$(dirname $0)/keeley/bundle-src
 DSTDIR=$(dirname $0)/keeley/static
+
 #REGISTRY=
 REGISTRY="http://registry.npm.taobao.org"
-
-rm -rf "$DSTDIR/node_modules"
-
-# generate a fake package.json (should we have a package.json?)
-#npm init --prefix="$DSTDIR" -y > "$DSTDIR/package.json"
-#sed -i "1,2d" "$DSTDIR/package.json"
-#sed -i 's/\"description": \"\"/\"description\": \"keely\"/g' "$DSTDIR/package.json"
 
 # registry switch
 if [ ! -z $REGISTRY ] ; then
@@ -23,8 +17,8 @@ else
 fi
 
 # install packages
-npm install --no-fund --save --only=production --prefix="$SRCDIR" $REGISTRY_ARG bufferutil utf-8-validate @syncfusion/ej2-filemanager
-npm install --no-fund --save --only=production --prefix="$SRCDIR" $REGISTRY_ARG webpack webpack-cli css-loader style-loader
+rm -rf "$SRCDIR/node_modules"
+npm install --no-fund --no-save --only=production --prefix="$SRCDIR" $REGISTRY_ARG
 
 # bundle
 cat <<-EOF > "$SRCDIR/webpack.config.js"
