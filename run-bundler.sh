@@ -25,8 +25,6 @@ fi
 npm install --no-fund --no-save --only=production --prefix="$DSTDIR" $REGISTRY_ARG bufferutil utf-8-validate @syncfusion/ej2-filemanager
 npm install --no-fund --no-save --only=production --prefix="$DSTDIR" $REGISTRY_ARG webpack webpack-cli css-loader style-loader
 
-# remove temp files
-
 # bundle
 cat <<-EOF > "$DSTDIR/webpack.config.js"
 	module.exports = {
