@@ -25,7 +25,6 @@ webpack --env production --env min --config "$SRCDIR/webpack.config.js"
 
 # remove temp files
 if [ "$1" != "--keep" ] ; then
-#	rm -f "$DSTDIR/package.json"
 #	rm -f "$DSTDIR/package-lock.json"
 #	rm -f "$DSTDIR/webpack.config.js"
 fi
