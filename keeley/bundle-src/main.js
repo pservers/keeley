@@ -9,6 +9,8 @@ import '@syncfusion/ej2-layouts/styles/material.css';
 import '@syncfusion/ej2-grids/styles/material.css';
 import '@syncfusion/ej2-filemanager/styles/material.css';
 
+<title>{{ SITE_NAME }}</title>
+
 import { FileManager } from '@syncfusion/ej2-filemanager';
 let fm = new FileManager({
     ajaxSettings: {

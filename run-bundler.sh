@@ -3,6 +3,7 @@
 # we use a download>generate>delete process because the files npm downloaded are too large (133M) so
 # that it is not good to commit them into a version control repository.
 
+WORKDIR=$(pwd)
 SRCDIR=$(dirname $0)/keeley/bundle-src
 DSTDIR=$(dirname $0)/keeley/static
 
@@ -21,7 +22,9 @@ rm -rf "$SRCDIR/node_modules"
 npm install --no-fund --no-save --prefix="$SRCDIR" $REGISTRY_ARG
 
 # bundle
-webpack --env production --env min --config "$SRCDIR/webpack.config.js"
+cd "$SRCDIR"
+npx webpack --mode production
+cd "$WORKDIR"
 
 # remove temp files
 if [ "$1" != "--keep" ] ; then
